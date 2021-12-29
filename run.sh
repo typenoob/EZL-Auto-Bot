@@ -14,7 +14,7 @@ do
     else
 	count=`expr $count + 1`
     fi
-    result=`python3 robot.py`
+    result=`python3 main.py`
 done
 
 #使用方法 sh ./send_message.sh "发送内容"
