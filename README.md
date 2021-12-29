@@ -9,13 +9,14 @@
 ### 自己构建镜像 
 
 ```
+git clone https://www.github.com/typenoob/EZL-Auto-Bot
 docker build -t zstu .
-docker run zstu --rm --name zstu --restart=always -p 5000:5000
+docker run -d --name zstu --restart=always -p 5000:5000 zstu
 ```
 
 ### 使用我上传的镜像
 
 ```
-docker run typenoob/zstu --rm --name zstu --restart=always -p 5000:5000
+docker run -d --name zstu --restart=always -p 5000:5000 typenoob/zstu
 ```
 
