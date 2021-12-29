@@ -25,9 +25,7 @@ class HealthRep:
             chrome_options.add_argument('--no-sandbox')
             chrome_options.add_argument('--disable-dev-shm-usage')
 
-        driver_path = './bin/chromedriver.exe' if os.name == 'nt' else './bin/chromedriver'
-        self.__client = webdriver.Chrome(
-            executable_path=driver_path, options=chrome_options)
+        self.__client = webdriver.Chrome(options=chrome_options)
         self.__wait = WebDriverWait(self.__client, 10, 0.5)
         self.__flag = False
 
