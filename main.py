@@ -1,7 +1,6 @@
 import datetime
 import json
 import logging
-import os
 import time
 from random import choice
 
@@ -24,10 +23,7 @@ class HealthRep:
             chrome_options.add_argument('--disable-gpu')
             chrome_options.add_argument('--no-sandbox')
             chrome_options.add_argument('--disable-dev-shm-usage')
-
-        driver_path = './bin/chromedriver.exe' if os.name == 'nt' else './bin/chromedriver'
-        self.__client = webdriver.Chrome(
-            executable_path=driver_path, options=chrome_options)
+        self.__client = webdriver.Chrome(options=chrome_options)
         self.__wait = WebDriverWait(self.__client, 10, 0.5)
         self.__flag = False
 
@@ -52,10 +48,13 @@ class HealthRep:
             username_input.send_keys(username)
             password_input.send_keys(password)
             login_button.click()
-
+            self.__wait.until(EC.alert_is_present())
+            alertObject = self.__client.switch_to.alert
+            alertObject.accept()
             self.__get_element_by_xpath(
                 '//*[@id="iform"]/div[1]/div[3]/form/div[4]/div/div/div[2]/div/div/div/div/div')
-        except:
+        except Exception as e:
+            print(e)
             return False
         else:
             return True
