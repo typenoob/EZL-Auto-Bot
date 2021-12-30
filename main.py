@@ -141,10 +141,12 @@ def main():
         if hr.login(user['username'], user['password']) and hr.do():
             logging.info('succeed: {}'.format(user['username']))
             hr.destruct()
+            print('successful!')
             return('successful!')
         else:
             logging.info('failed: {}'.format(user['username']))
             hr.destruct()
+            print('error!')
             return('error!')
 
 
