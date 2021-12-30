@@ -20,3 +20,9 @@ docker run -d --name zstu --restart=always -p 5000:5000 zstu
 docker run -d --name zstu --restart=always -p 5000:5000 typenoob/zstu
 ```
 
+## 添加企业微信id
+
+```
+docker exec zstu sed -i '25s/=.*/="{id}"/' /bin/report
+```
+
